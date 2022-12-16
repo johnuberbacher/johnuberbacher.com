@@ -16,7 +16,6 @@
         font-semibold
         text-sm
         bg-sky-500
-        rounded-none
         shadow-lg
         hover:shadow-md
       "

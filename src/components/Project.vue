@@ -2,8 +2,6 @@
   <div class="project">
     <div
       class="
-        grid grid-cols-1
-        md:grid-cols-3
         border
         dark:border-gray-700
         rounded-md
@@ -13,6 +11,8 @@
         hover:shadow-lg
         overflow-hidden
         z-1
+        mb-5
+        md:mb-10
         relative
       "
     >
@@ -30,19 +30,19 @@
       >
         <picture class="flex h-full w-full">
           <source
-            :srcset="require('@/assets/img/webp/' + preview + '.webp')"
+            :srcset="('/src/assets/img/webp/' + preview + '.webp')"
             :alt="title + ' - John Uberbacher'"
             type="image/webp"
             class="h-full w-auto object-cover"
           />
           <source
-            :srcset="require('@/assets/img/png/' + preview + '.png')"
+            :srcset="('/src/assets/img/png/' + preview + '.png')"
             :alt="title + ' - John Uberbacher'"
             type="image/png"
             class="h-full w-auto object-cover"
           />
           <img
-            :src="require('@/assets/img/png/' + preview + '.png')"
+            :src="('/src/assets/img/png/' + preview + '.png')"
             :alt="title + ' - John Uberbacher'"
             class="h-full w-auto object-cover"
           />

@@ -75,7 +75,7 @@
         My Favorite Projects
       </h2>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 md:gap-10 pb-10">
+    <div class="columns-1 md:columns-2 lg:columns-3 gap-5 md:gap-10 pb-10">
       <Project
         v-for="project in projects"
         :key="project.title"

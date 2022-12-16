@@ -4,21 +4,14 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Home from "./components/Home.vue";
-
-export default {
-  name: "App",
-  components: {
-    Home,
-  },
-};
 </script>
 
 <style lang="scss">
 .container {
   @media (min-width: 1280px) {
-    max-width: 1024px !important;
+    max-width: 1280px !important;
   }
 }
 .title-gradient {

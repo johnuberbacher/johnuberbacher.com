@@ -28,7 +28,7 @@
     <div
       class="
         grid grid-cols-1
-        lg:grid-cols-2
+        lg:grid-cols-5
         flex
         items-center
         justify-center
@@ -45,6 +45,7 @@
           lg:text-left
           order-2
           lg:order-1
+          lg:col-span-3
         "
       >
         <h1 class="mb-6 text-blue-500 font-bold text-3xl lg:text-xl">
@@ -150,6 +151,7 @@
           lg:order-2
           pt-10
           lg:pt-0
+          lg:col-span-2
         "
       >
         <picture class="block">
