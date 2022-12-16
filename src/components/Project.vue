@@ -30,19 +30,19 @@
       >
         <picture class="flex h-full w-full">
           <source
-            :srcset="('/src/assets/img/webp/' + preview + '.webp')"
+            :srcset="('/assets/img/webp/' + preview + '.webp')"
             :alt="title + ' - John Uberbacher'"
             type="image/webp"
             class="h-full w-auto object-cover"
           />
           <source
-            :srcset="('/src/assets/img/png/' + preview + '.png')"
+            :srcset="('/assets/img/png/' + preview + '.png')"
             :alt="title + ' - John Uberbacher'"
             type="image/png"
             class="h-full w-auto object-cover"
           />
           <img
-            :src="('/src/assets/img/png/' + preview + '.png')"
+            :src="('/assets/img/png/' + preview + '.png')"
             :alt="title + ' - John Uberbacher'"
             class="h-full w-auto object-cover"
           />
