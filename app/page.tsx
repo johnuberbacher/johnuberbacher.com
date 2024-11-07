@@ -10,7 +10,7 @@ export default function Home() {
         <div className="col-span-1 flex h-full flex-col justify-between p-8 md:p-6 md:pl-20 gap-4 z-1">
         
           <p className="m-0 font-extralight text-md my-9">
-            Hey, I'm <span className="font-bold">John Uberbacher</span>. I am a
+            Hey, I&apos;m <span className="font-bold">John Uberbacher</span>. I am a
             self&#x2011;motivated individual with a strong interest in development and
             design.
             <br />

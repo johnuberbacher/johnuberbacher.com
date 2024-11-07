@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inter, Roboto_Slab } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
+const inter = Inter({ 
+  subsets: ["latin"], 
+  display: "swap" 
 });
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -48,7 +48,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-950 flex flex-col justify-center items-center default`}
+        className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-950 flex flex-col justify-center items-center default`}
       >
         {children}
       </body>

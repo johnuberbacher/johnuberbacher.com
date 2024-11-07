@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface CardProps {
   colSpan?: string;
   rowSpan?: string;
-  children: any;
+  children: ReactNode;
 }
 
 const Card: React.FC<CardProps> = ({
