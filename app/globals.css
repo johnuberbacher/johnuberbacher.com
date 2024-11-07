@@ -18,7 +18,7 @@ body {
   min-width: 330px;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
 body:before {
@@ -28,9 +28,16 @@ body:before {
   height: 100vh;
   width: 101vw;
   position: fixed;
-  background: linear-gradient(90deg, var(--line-color) 1px, transparent 1px) 0 0 / var(--line-size) var(--line-size), linear-gradient(var(--line-color) 1px, transparent 1px) 0 0 / var(--line-size) var(--line-size);
+  background: linear-gradient(90deg, var(--line-color) 1px, transparent 1px) 0 0 /
+      var(--line-size) var(--line-size),
+    linear-gradient(var(--line-color) 1px, transparent 1px) 0 0 /
+      var(--line-size) var(--line-size);
   top: 0;
   z-index: -1;
   -webkit-mask: linear-gradient(-360deg, transparent 40%, white);
   mask: linear-gradient(-360deg, transparent 40%, white);
+}
+
+.font-serif {
+  font-family: "Roboto_Slab";
 }
