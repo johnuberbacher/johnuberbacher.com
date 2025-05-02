@@ -17,17 +17,17 @@ const Card: React.FC<CardProps> = ({}) => {
   let message = "Just doing my thing!";
 
   if (!isWeekend && hours >= 9 && hours < 17) {
-    message = "I'm probably clacking away on a keyboard!";
+    message = "Hmm... I'm probably clacking away on a keyboard";
   } else if (isNight) {
     message = "Hmm... I'm probably sleeping!";
   } else if (!isWeekend && hours >= 17 && hours < 22) {
-    message = "Unwinding after a long day 🛋️";
+    message = "Probably unwinding after a long day";
   } else if (!isWeekend && hours >= 6 && hours < 9) {
-    message = "Getting ready to start the day ☕";
+    message = "Probably getting ready to start the day";
   } else if (isWeekend && hours >= 9 && hours < 21) {
-    message = "Enjoying the weekend vibes ✨";
+    message = "Probably enjoying the weekend vibes";
   } else if (isWeekend && (hours < 9 || hours >= 21)) {
-    message = "Probably chilling or sleeping in 😴";
+    message = "Probably hanging out or sleeping in";
   }
 
   const timeString =
