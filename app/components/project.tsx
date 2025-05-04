@@ -30,17 +30,20 @@ export const Project: React.FC<ProjectProps> = ({
         <div className="text-xs font-extralight m-0">{description}</div>
       </div>
       <div className="flex flex-row w-full gap-2 font-light m-0 relative z-20">
-        <Button
-          text="Demo"
-          href={demoLink}
-          newTab
-          className="w-full text-center text-xs"
-        />
+        {demoLink && (
+          <Button
+            text="Demo"
+            href={demoLink}
+            newTab
+            className="text-center text-xs"
+          />
+        )}
+
         <Button
           text="GitHub"
           href={githubLink}
           newTab
-          className="w-full text-center text-xs"
+          className=" text-center text-xs"
         />
       </div>
     </div>

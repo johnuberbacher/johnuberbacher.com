@@ -71,13 +71,6 @@ export default function Home() {
         colSpan="col-span-1 md:col-span-1 lg:col-span-1"
         rowSpan="md:row-span-1"
       >
-        <Time />
-      </Card>
-
-      <Card
-        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
-        rowSpan="md:row-span-1"
-      >
         <Project
           title="Feedback Wizard"
           description="Vue 3 app for topic-based feedback, using Firebase for auth/storage and Tailwind CSS for styling."
@@ -88,12 +81,12 @@ export default function Home() {
       </Card>
 
       <Card
-        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        colSpan="col-span-1 md:col-span-1 lg:col-span-2"
         rowSpan="md:row-span-1"
       >
         <Project
           title="React Card Builder"
-          description="Create custom TCG cards with React: choose templates, customize attributes, upload art, and export."
+          description="TCG Card Builder is a React-based application that allows users to create custom trading card game (TCG) cards for games like Lorcana and Yu-Gi-Oh."
           image="react-card-builder.png"
           demoLink="https://tcgbuilder.netlify.app/"
           githubLink="https://github.com/johnuberbacher/react-card-builder"
@@ -123,6 +116,51 @@ export default function Home() {
           image="amiibo-tracker.png"
           demoLink="https://amiibo-tracker.netlify.app/"
           githubLink="https://github.com/johnuberbacher/amiibo-tracker"
+        />
+      </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Time />
+      </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Project
+          title="Vue 95"
+          description="Simple recreation of the Windows 95 operating system built with Vue 3."
+          image="vue95.png"
+          demoLink="https://johnuberbacher.com/vue95"
+          githubLink="https://github.com/johnuberbacher/vue-95"
+        />
+      </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Project
+          title="Pokédex"
+          description="A Pokédex app for Web, Desktop, Android and iOS built using Dart and Flutter."
+          image="pokedex.png"
+          githubLink="https://github.com/johnuberbacher/pokedex"
+        />
+      </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Project
+          title="React Invoice Generator"
+          description="An Invoice creator project built with React and jspdf-react."
+          image="react-invoice-generator.png"
+          demoLink="https://invoice-generator-react.netlify.app/"
+          githubLink="https://github.com/johnuberbacher/invoice-generator"
         />
       </Card>
     </div>
