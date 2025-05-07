@@ -11,16 +11,17 @@ export default function Home() {
         colSpan="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3"
         rowSpan="md:row-span-2"
       >
-        <div className="relative flex h-full flex-col md:flex-row">
-          <div className="relative z-10 flex flex-col items-start justify-center gap-4 p-6 md:w-1/2 md:p-10 md:pr-0">
+        <div className="relative flex h-full flex-col-reverse sm:flex-row">
+          <div className="relative z-10 flex flex-col items-start justify-center gap-4 p-6 sm:w-1/2 sm:p-10 sm:pr-0">
+            <h1 className="m-0 text-lg font-extralight md:text-xl">
+              Hey, I&apos;m <span className="font-bold">John Uberbacher</span>.
+            </h1>
             <p className="m-0 mb-3 text-sm font-extralight">
-              Hey, I'm <span className="font-bold">John Uberbacher</span>. I am
-              a driven and solutions-focused developer with a strong background
-              in both front-end and back-end software development.
-              <br />
-              <br /> Skilled in solving complex problems and leading
-              collaborative efforts. Passionate about building smooth, reliable
-              web experiences that make a real impact.
+              I am a driven and solutions-focused developer with a strong
+              background in both front-end and back-end software development.
+              Skilled in solving complex problems and leading collaborative
+              efforts. Passionate about building smooth, reliable web
+              experiences that make a real impact.
               <br />
               <br />
               In short; I work to make the internet a better experience.
@@ -30,24 +31,27 @@ export default function Home() {
               <Button
                 text="LinkedIn"
                 href="https://www.linkedin.com/in/johnuberbacher/"
+                className="text-center text-xs"
                 newTab
               />
               <Button
                 text="Resume"
                 href="http://johnuberbacher.com/resume.pdf"
+                className="text-center text-xs"
                 newTab
               />
               <Button
                 text="GitHub"
                 href="https://github.com/johnuberbacher"
+                className="text-center text-xs"
                 newTab
               />
             </div>
           </div>
-          <div className="absolute inset-0 h-full md:relative md:w-1/2">
+          <div className="sm flex h-full flex-col items-center justify-center px-6 pt-6 sm:w-1/2 sm:justify-start sm:pb-6 sm:pr-10 md:justify-center">
             <img
               src="avatar.png"
-              className="pointer-events-none ml-auto mr-0 h-full w-auto select-none object-cover opacity-30 md:w-full md:object-cover md:opacity-100"
+              className="pointer-events-none mx-auto aspect-square h-auto w-full max-w-xs select-none overflow-hidden rounded-full bg-neutral-800 object-cover"
               alt=""
             />
           </div>
@@ -147,6 +151,7 @@ export default function Home() {
           title="Pokédex"
           description="A Pokédex app for Web, Desktop, Android and iOS built using Dart and Flutter."
           image="pokedex.png"
+          demoLink=""
           githubLink="https://github.com/johnuberbacher/pokedex"
         />
       </Card>

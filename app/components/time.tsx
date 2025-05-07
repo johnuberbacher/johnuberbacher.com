@@ -1,8 +1,6 @@
 import React from "react";
 
-interface CardProps {}
-
-const Card: React.FC<CardProps> = ({}) => {
+const Card: React.FC = () => {
   const dateStr = new Date().toLocaleString("en-US", {
     timeZone: "America/Denver",
   });
@@ -38,12 +36,12 @@ const Card: React.FC<CardProps> = ({}) => {
     }) + " MT";
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="h-full flex text-3xl items-center justify-center font-serif p-6">
+    <div className="flex h-full flex-col">
+      <div className="flex h-full items-center justify-center p-6 font-serif text-3xl">
         {timeString}
       </div>
-      <div className="h-full flex flex-row gap-3 items-start justify-center text-xs font-light m-0 relative p-6 border-t border-t-neutral-600 z-20">
-        <span className="flex h-2 w-2 relative mt-1">
+      <div className="relative z-20 m-0 flex h-full flex-row items-start justify-center gap-3 border-t border-t-neutral-600 p-6 text-sm font-light">
+        <span className="relative mt-1 flex h-2 w-2">
           <span
             className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
               isOffHours ? "bg-red-400" : "bg-green-400"
