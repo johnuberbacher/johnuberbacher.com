@@ -85,7 +85,7 @@ export default function Home() {
       </Card>
 
       <Card
-        colSpan="col-span-1 md:col-span-1 lg:col-span-2"
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
         rowSpan="md:row-span-1"
       >
         <Project
@@ -166,6 +166,19 @@ export default function Home() {
           image="react-invoice-generator.png"
           demoLink="https://invoice-generator-react.netlify.app/"
           githubLink="https://github.com/johnuberbacher/invoice-generator"
+        />
+      </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Project
+          title="NextQuest Habit Tracker"
+          description="Schedule and log your habits, built with Vue 3 and Nuxt 3."
+          image="nextquest-habit-tracker.png"
+          demoLink="https://johnuberbacher.com/nextquest/"
+          githubLink="https://github.com/johnuberbacher/nextquest"
         />
       </Card>
     </div>
