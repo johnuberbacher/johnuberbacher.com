@@ -6,48 +6,52 @@ import "material-symbols";
 
 export default function Home() {
   return (
-    <div className="text-white m-auto p-4 md:p-8 xl:pt-12 grid gap-4 max-w-6xl overflow-hidden relative w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="relative m-auto grid w-full max-w-6xl gap-4 overflow-hidden p-4 text-white sm:grid-cols-2 md:grid-cols-3 md:p-8 lg:grid-cols-4 xl:pt-12">
       <Card
         colSpan="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3"
         rowSpan="md:row-span-2"
       >
-        <div className="flex flex-col md:flex-row h-full relative">
-          <div className="relative z-10 flex flex-col p-6 md:p-10 md:pr-0 gap-4 justify-center items-start md:w-1/2">
-            <p className="m-0 font-extralight text-sm mb-3">
-              Hey, I'm <span className="font-bold">John Uberbacher</span>. I am
-              a driven and solutions-focused developer with a strong background
-              in both front-end and back-end software development.
-              <br />
-              <br /> Skilled in solving complex problems and leading
-              collaborative efforts. Passionate about building smooth, reliable
-              web experiences that make a real impact.
+        <div className="relative flex h-full flex-col-reverse sm:flex-row">
+          <div className="relative z-10 flex flex-col items-start justify-center gap-4 p-6 sm:w-1/2 sm:p-10 sm:pr-0">
+            <h1 className="m-0 text-lg font-extralight md:text-xl">
+              Hey, I&apos;m <span className="font-bold">John Uberbacher</span>.
+            </h1>
+            <p className="m-0 mb-3 text-sm font-extralight">
+              I am a driven and solutions-focused developer with a strong
+              background in both front-end and back-end software development.
+              Skilled in solving complex problems and leading collaborative
+              efforts. Passionate about building smooth, reliable web
+              experiences that make a real impact.
               <br />
               <br />
               In short; I work to make the internet a better experience.
             </p>
 
-            <div className="flex flex-wrap md:flex-nowrap gap-4 z-10">
+            <div className="z-10 flex flex-wrap gap-4 md:flex-nowrap">
               <Button
                 text="LinkedIn"
                 href="https://www.linkedin.com/in/johnuberbacher/"
+                className="text-center text-xs"
                 newTab
               />
               <Button
                 text="Resume"
                 href="http://johnuberbacher.com/resume.pdf"
+                className="text-center text-xs"
                 newTab
               />
               <Button
                 text="GitHub"
                 href="https://github.com/johnuberbacher"
+                className="text-center text-xs"
                 newTab
               />
             </div>
           </div>
-          <div className="absolute inset-0 md:relative md:w-1/2 h-full">
+          <div className="sm flex h-full flex-col items-center justify-center px-6 pt-6 sm:w-1/2 sm:justify-start sm:pb-6 sm:pr-10 md:justify-center">
             <img
               src="avatar.png"
-              className="mr-0 ml-auto w-auto md:w-full h-full object-cover md:object-cover opacity-30 md:opacity-100 select-none pointer-events-none"
+              className="pointer-events-none mx-auto aspect-square h-auto w-full max-w-xs select-none overflow-hidden rounded-full bg-neutral-800 object-cover"
               alt=""
             />
           </div>
@@ -81,7 +85,7 @@ export default function Home() {
       </Card>
 
       <Card
-        colSpan="col-span-1 md:col-span-1 lg:col-span-2"
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
         rowSpan="md:row-span-1"
       >
         <Project
@@ -91,6 +95,13 @@ export default function Home() {
           demoLink="https://tcgbuilder.netlify.app/"
           githubLink="https://github.com/johnuberbacher/react-card-builder"
         />
+      </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Time />
       </Card>
 
       <Card
@@ -123,13 +134,6 @@ export default function Home() {
         colSpan="col-span-1 md:col-span-1 lg:col-span-1"
         rowSpan="md:row-span-1"
       >
-        <Time />
-      </Card>
-
-      <Card
-        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
-        rowSpan="md:row-span-1"
-      >
         <Project
           title="Vue 95"
           description="Simple recreation of the Windows 95 operating system built with Vue 3."
@@ -147,6 +151,7 @@ export default function Home() {
           title="Pokédex"
           description="A Pokédex app for Web, Desktop, Android and iOS built using Dart and Flutter."
           image="pokedex.png"
+          demoLink=""
           githubLink="https://github.com/johnuberbacher/pokedex"
         />
       </Card>
@@ -163,21 +168,34 @@ export default function Home() {
           githubLink="https://github.com/johnuberbacher/invoice-generator"
         />
       </Card>
+
+      <Card
+        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
+        rowSpan="md:row-span-1"
+      >
+        <Project
+          title="NextQuest Habit Tracker"
+          description="Schedule and log your habits, built with Vue 3 and Nuxt 3."
+          image="nextquest-habit-tracker.png"
+          demoLink="https://johnuberbacher.com/nextquest/"
+          githubLink="https://github.com/johnuberbacher/nextquest"
+        />
+      </Card>
     </div>
   );
 }
 /*
 <Card colSpan="col-span-1 md:col-span-1 lg:col-span-1" rowSpan="md:row-span-1">
   <div className="flex flex-col gap-2 p-6">
-    <div className="bg-neutral-800 border-1 border-neutral-700 rounded-lg py-4 px-6 relative">
-      <span className="absolute flex h-3 w-3 left-2 top-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-90"></span>
-        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+    <div className="border-1 relative rounded-lg border-neutral-700 bg-neutral-800 px-6 py-4">
+      <span className="absolute left-2 top-2 flex h-3 w-3">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-90"></span>
+        <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
       </span>
-      <div className="text-smm-0 font-extralight text-xs">yoo</div>
+      <div className="text-smm-0 text-xs font-extralight">yoo</div>
     </div>
-    <div className="bg-neutral-800 border-1 border-neutral-700 rounded-full py-4 px-6">
-      <div className="text-smm-0 font-extralight text-xs">yoo</div>
+    <div className="border-1 rounded-full border-neutral-700 bg-neutral-800 px-6 py-4">
+      <div className="text-smm-0 text-xs font-extralight">yoo</div>
     </div>
   </div>
 </Card>
