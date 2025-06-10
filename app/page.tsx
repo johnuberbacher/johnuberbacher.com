@@ -90,7 +90,7 @@ export default function Home() {
       >
         <Project
           title="React Card Builder"
-          description="TCG Card Builder is a React-based application that allows users to create custom trading card game (TCG) cards for games like Lorcana and Yu-Gi-Oh."
+          description="TCG Card Builder is a React-based application that allows users to create custom cards for Lorcana and Yu-Gi-Oh."
           image="react-card-builder.png"
           demoLink="https://tcgbuilder.netlify.app/"
           githubLink="https://github.com/johnuberbacher/react-card-builder"

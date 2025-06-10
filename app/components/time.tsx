@@ -1,35 +1,44 @@
 import React from "react";
 
 const Card: React.FC = () => {
-  const dateStr = new Date().toLocaleString("en-US", {
+  const now = new Date();
+
+  const formatter = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Denver",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+    weekday: "short",
   });
 
-  const currentDate = new Date(dateStr);
-  const hours = currentDate.getHours();
-  const day = currentDate.getDay();
+  const parts = formatter.formatToParts(now);
+  const hour = parseInt(parts.find(p => p.type === "hour")?.value || "0", 10);
+  const weekdayStr = parts.find(p => p.type === "weekday")?.value || "Sun";
+
+  const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(weekdayStr);
   const isWeekend = day === 0 || day === 6;
-  const isNight = hours >= 22 || hours < 6;
+  const isNight = hour >= 22 || hour < 6;
   const isOffHours = isNight || isWeekend;
 
   let message = "Just doing my thing!";
 
-  if (!isWeekend && hours >= 9 && hours < 17) {
+  if (!isWeekend && hour >= 9 && hour < 17) {
     message = "Hmm... I'm probably clacking away on a keyboard";
   } else if (isNight) {
     message = "Hmm... I'm probably sleeping!";
-  } else if (!isWeekend && hours >= 17 && hours < 22) {
+  } else if (!isWeekend && hour >= 17 && hour < 22) {
     message = "Probably unwinding after a long day";
-  } else if (!isWeekend && hours >= 6 && hours < 9) {
+  } else if (!isWeekend && hour >= 6 && hour < 9) {
     message = "Probably getting ready to start the day";
-  } else if (isWeekend && hours >= 9 && hours < 21) {
+  } else if (isWeekend && hour >= 9 && hour < 21) {
     message = "Probably enjoying the weekend vibes";
-  } else if (isWeekend && (hours < 9 || hours >= 21)) {
+  } else if (isWeekend && (hour < 9 || hour >= 21)) {
     message = "Probably hanging out or sleeping in";
   }
 
   const timeString =
-    currentDate.toLocaleString("en-US", {
+    now.toLocaleTimeString("en-US", {
+      timeZone: "America/Denver",
       hour: "numeric",
       minute: "numeric",
       hour12: true,
