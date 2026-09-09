@@ -31,7 +31,8 @@ yarn-error.log*
 
 # Environment variables
 .env*
-!.env.example # If you want to commit an example env file
+# Keep the committed example env file
+!.env.example
 
 # Vercel
 .vercel/

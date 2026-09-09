@@ -1,63 +1,80 @@
 import Button from "./components/button";
-import Card from "./components/card";
-import { Project } from "./components/project";
-import Time from "./components/time";
-import "material-symbols";
 
 export default function Home() {
   return (
-    <div className="relative m-auto grid w-full max-w-6xl gap-4 overflow-hidden p-4 text-white sm:grid-cols-2 md:grid-cols-3 md:p-8 lg:grid-cols-4 xl:pt-12">
-      <Card
-        colSpan="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3"
-        rowSpan="md:row-span-2"
-      >
-        <div className="relative flex h-full flex-col-reverse sm:flex-row">
-          <div className="relative z-10 flex flex-col items-start justify-center gap-4 p-6 sm:w-1/2 sm:p-10 sm:pr-0">
-            <h1 className="m-0 text-lg font-extralight md:text-xl">
-              Hey, I&apos;m <span className="font-bold">John Uberbacher</span>.
-            </h1>
-            <p className="m-0 mb-3 text-sm font-extralight">
-              I am a driven and solutions-focused developer with a strong
-              background in both front-end and back-end software development.
-              Skilled in solving complex problems and leading collaborative
-              efforts. Passionate about building smooth, reliable web
-              experiences that make a real impact.
-              <br />
-              <br />
-              In short; I work to make the internet a better experience.
-            </p>
+    <main className="page">
+      {/* Both ship; globals.css shows one per theme. eslint-disable for
+          no-img-element: static export, next/image adds no optimisation here. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="portrait portrait-light"
+        src="/me.jpg"
+        width={643}
+        height={612}
+        alt="John Uberbacher"
+        fetchPriority="high"
+        decoding="async"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="portrait portrait-dark"
+        src="/me-dark.jpg"
+        width={1059}
+        height={1008}
+        alt="John Uberbacher"
+        fetchPriority="high"
+        decoding="async"
+      />
 
-            <div className="z-10 flex flex-wrap gap-4 md:flex-nowrap">
+      <div className="intro">
+        <div className="flex flex-col items-center gap-1">
+          <p className="kicker m-0">Hey, I&apos;m</p>
+          <h1 className="display m-0">John Uberbacher.</h1>
+        </div>
+
+        <p className="lede m-0">
+          I&apos;m a driven, solutions-focused developer with a long history of
+          delivering high-quality software across code, design, and everything
+          in between. Skilled at solving real user problems and leading product
+          delivery from first idea to launch.
+        </p>
+
+        <p className="lede closer m-0">
+          In short: I work to make the internet a better experience.
+        </p>
+
+        <nav aria-label="Find me elsewhere" className="mt-2">
+          <ul className="m-0 flex list-none flex-wrap justify-center gap-3 p-0">
+            <li>
               <Button
                 text="LinkedIn"
                 href="https://www.linkedin.com/in/johnuberbacher/"
-                className="text-center text-xs"
                 newTab
               />
+            </li>
+            <li>
               <Button
                 text="Resume"
-                href="http://johnuberbacher.com/resume.pdf"
-                className="text-center text-xs"
+                href="/resume.pdf"
+                label="Resume (PDF, opens in a new tab)"
                 newTab
               />
+            </li>
+            <li>
               <Button
                 text="GitHub"
                 href="https://github.com/johnuberbacher"
-                className="text-center text-xs"
                 newTab
               />
-            </div>
-          </div>
-          <div className="sm flex h-full flex-col items-center justify-center px-6 pt-6 sm:w-1/2 sm:justify-start sm:pb-6 sm:pr-10 md:justify-center">
-            <img
-              src="avatar.png"
-              className="pointer-events-none mx-auto aspect-square h-auto w-full max-w-xs select-none overflow-hidden rounded-full bg-neutral-800 object-cover"
-              alt=""
-            />
-          </div>
-        </div>
-      </Card>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
+      {/* Parked: the project tiles. To bring them back, restore the grid
+          classes on <main>, uncomment the block below, and re-add
+          `import { Project } from "./components/project";` above. */}
+      {/*
       <Card
         colSpan="col-span-1 md:col-span-1 lg:col-span-1"
         rowSpan="md:row-span-1"
@@ -95,13 +112,6 @@ export default function Home() {
           demoLink="https://tcgbuilder.netlify.app/"
           githubLink="https://github.com/johnuberbacher/react-card-builder"
         />
-      </Card>
-
-      <Card
-        colSpan="col-span-1 md:col-span-1 lg:col-span-1"
-        rowSpan="md:row-span-1"
-      >
-        <Time />
       </Card>
 
       <Card
@@ -181,22 +191,7 @@ export default function Home() {
           githubLink="https://github.com/johnuberbacher/nextquest"
         />
       </Card>
-    </div>
+      */}
+    </main>
   );
 }
-/*
-<Card colSpan="col-span-1 md:col-span-1 lg:col-span-1" rowSpan="md:row-span-1">
-  <div className="flex flex-col gap-2 p-6">
-    <div className="border-1 relative rounded-lg border-neutral-700 bg-neutral-800 px-6 py-4">
-      <span className="absolute left-2 top-2 flex h-3 w-3">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-90"></span>
-        <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
-      </span>
-      <div className="text-smm-0 text-xs font-extralight">yoo</div>
-    </div>
-    <div className="border-1 rounded-full border-neutral-700 bg-neutral-800 px-6 py-4">
-      <div className="text-smm-0 text-xs font-extralight">yoo</div>
-    </div>
-  </div>
-</Card>
-*/

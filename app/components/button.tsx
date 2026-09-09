@@ -5,17 +5,25 @@ interface ButtonProps {
   href: string;
   newTab?: boolean;
   className?: string;
+  /** Announced to screen readers in place of `text` when the link needs context. */
+  label?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, href, newTab = false, className }) => (
-  <Link href={href} legacyBehavior>
-    <a
-      className={`px-5 py-2 bg-transparent border border-white hover:border-blue-500 text-white rounded-lg font-bold transform hover:-translate-y-1 hover:shadow-lg transition duration-400 ${className}`}
-      target={newTab ? "_blank" : "_self"}
-      rel={newTab ? "noopener noreferrer" : undefined}
-    >
-      {text}
-    </a>
+const Button: React.FC<ButtonProps> = ({
+  text,
+  href,
+  newTab = false,
+  className = "",
+  label,
+}) => (
+  <Link
+    href={href}
+    className={`chip ${className}`}
+    target={newTab ? "_blank" : undefined}
+    rel={newTab ? "noopener noreferrer" : undefined}
+    aria-label={label ?? (newTab ? `${text} (opens in a new tab)` : undefined)}
+  >
+    {text}
   </Link>
 );
 

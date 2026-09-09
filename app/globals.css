@@ -2,41 +2,255 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------
+   Tokens
+   --band is sampled from each portrait's own backdrop (#ededed in
+   me.jpg, #111516 in me-dark.jpg), so the portrait sits inside the
+   band rather than on top of it.
+
+   Three theme states: bare :root is light; the media query covers
+   "system" (no data-theme stamped); the attribute rule lets the
+   toggle win over the OS in either direction.
+   --------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #ffffff;
+  --band: #ededed;
+  --ink: #17191c;
+  --muted: #5f646b;
+  --rule: #dcdddf;
+  --rule-strong: #c4c6c9;
+  --selection: #d8e2f5;
+
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --paper: #191d1e;
+    --band: #111516;
+    --ink: #e8eaea;
+    --muted: #9aa1a3;
+    --rule: #2a2f30;
+    --rule-strong: #3b4142;
+    --selection: #253449;
+
+    color-scheme: dark;
   }
 }
 
+:root[data-theme="dark"] {
+  --paper: #191d1e;
+  --band: #111516;
+  --ink: #e8eaea;
+  --muted: #9aa1a3;
+  --rule: #2a2f30;
+  --rule-strong: #3b4142;
+  --selection: #253449;
+
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  min-width: 330px;
-  color: var(--foreground);
-  background: var(--background);
+  min-width: 320px;
+  background: var(--paper);
+  color: var(--ink);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
 }
 
-body:before {
-  --line-color: #383838;
-  --line-size: 80px;
-  content: "";
-  height: 100vh;
-  width: 101vw;
-  position: fixed;
-  background: linear-gradient(90deg, var(--line-color) 1px, transparent 1px) 0 0 /
-      var(--line-size) var(--line-size),
-    linear-gradient(var(--line-color) 1px, transparent 1px) 0 0 /
-      var(--line-size) var(--line-size);
-  top: -1px;
-  z-index: -1;
-  -webkit-mask: linear-gradient(-360deg, transparent 25%, white);
-  mask: linear-gradient(-360deg, transparent 25%, white);
+::selection {
+  background: var(--selection);
+  color: var(--ink);
 }
 
-.font-serif {
-  font-family: "Roboto_Slab";
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  /* ---- Page ------------------------------------------------- */
+  .page {
+    --pad-top: clamp(3.5rem, 9vh, 7rem);
+    --portrait: clamp(200px, 32vw, 264px);
+    position: relative;
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--pad-top) 1.5rem 4rem;
+    text-align: center;
+  }
+
+  /* The band stops at the portrait's midline, so the circle straddles
+     the seam the way it does in the reference. */
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: calc(var(--pad-top) + var(--portrait) / 2);
+    background: var(--band);
+  }
+
+  .page > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Portrait --------------------------------------------- */
+  .portrait {
+    display: block;
+    width: var(--portrait);
+    height: var(--portrait);
+    border-radius: 9999px;
+    object-fit: cover;
+    object-position: center 18%;
+    /* White ring reads against the band above, vanishes into the paper
+       below - which is what gives the circle its half-lit edge. */
+    box-shadow: 0 0 0 clamp(6px, 1.4vw, 11px) var(--paper);
+    user-select: none;
+  }
+
+  /* Two portraits ship; CSS picks one per theme so the swap survives
+     both the OS preference and the toggle, with no hydration flash. */
+  .portrait-dark { display: none; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .portrait-light { display: none; }
+    :root:not([data-theme="light"]) .portrait-dark { display: block; }
+  }
+
+  :root[data-theme="dark"] .portrait-light { display: none; }
+  :root[data-theme="dark"] .portrait-dark { display: block; }
+
+  /* ---- Theme toggle ------------------------------------------ */
+  .theme-toggle {
+    position: fixed;
+    top: clamp(1rem, 2.5vw, 1.75rem);
+    right: clamp(1rem, 2.5vw, 1.75rem);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid var(--rule);
+    border-radius: 9999px;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  .theme-toggle:hover {
+    background: var(--band);
+    border-color: var(--rule-strong);
+  }
+
+  /* No `display` here: it would out-specify the .icon-* rules below and
+     both icons would show. Sizing only. */
+  .theme-toggle svg { width: 1.0625rem; height: 1.0625rem; }
+
+  /* The icon shows the theme you'd switch *to*, matching the label. */
+  .icon-moon { display: block; }
+  .icon-sun { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .icon-moon { display: none; }
+    :root:not([data-theme="light"]) .icon-sun { display: block; }
+  }
+  :root[data-theme="dark"] .icon-moon { display: none; }
+  :root[data-theme="dark"] .icon-sun { display: block; }
+
+  /* ---- Type -------------------------------------------------- */
+  .intro {
+    margin-top: clamp(2.25rem, 5vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .kicker {
+    font-size: clamp(1rem, 0.85rem + 0.7vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.012em;
+    color: var(--muted);
+  }
+
+  .display {
+    font-size: clamp(2rem, 1.1rem + 3.6vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+
+  .lede {
+    max-width: 52ch;
+    font-size: 1rem;
+    line-height: 1.72;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  .closer {
+    max-width: 44ch;
+    color: var(--ink);
+    font-weight: 450;
+  }
+
+  /* ---- Links -------------------------------------------------- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--rule);
+    border-radius: 9999px;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.6875rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  .chip:hover {
+    background: var(--band);
+    border-color: var(--rule-strong);
+  }
+
+  /* ---- Card ---------------------------------------------------
+     Only used by the parked project tiles; kept in step with the
+     light palette so they render correctly if restored. */
+  .tile {
+    position: relative;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+
+  .tile-inner {
+    position: relative;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
